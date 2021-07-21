@@ -19,10 +19,10 @@
   <%= f.label :price, "円" %>
 
   <h4>販売ステータス</h4>
-  <%= f.radio_button :is_active, true %>
+  <%= f.radio_button :is_active, ['販売中', true] %>
   <%= f.label :is_active, '販売中' %>
 
-  <%= f.radio_button :is_active, false %>
+  <%= f.radio_button :is_active, ['販売停止中', false] %>
   <%= f.label :is_active, '販売停止中' %>
 
   <%= f.submit "新規登録" %>

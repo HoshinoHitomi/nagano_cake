@@ -18,6 +18,17 @@
         <span>商品一覧</span>
         <span>新規登録</span>
         <span>ログイン</span>
+        <% if admin_signed_in? %>
+          <ul>
+            <li>
+              <%= link_to '商品一覧', admin_items_path %>
+            </li>
+
+            <li>
+              <%= link_to '注文履歴一覧', admin_root_path %>
+            </li>
+          </ul>
+        <% end %>
       </nav>
     </header>
 

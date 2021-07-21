@@ -1,8 +1,9 @@
 <h1>商品新規登録</h1>
 
-<%= form_with model:@item, local:true do |f| %>
+<%= form_with model: @item, url: admin_items_path, local:true do |f| %>
 
   <h4>商品画像</h4>
+  <%= f.attachment_field :image_id %>
 
   <h4>商品名</h4>
   <%= f.text_field :name, placeholder: '商品名' %>
@@ -11,11 +12,18 @@
   <%= f.text_area :introduction, placeholder: 'ここに説明文を記述します' %>
 
   <h4>ジャンル</h4>
+  <%= f.select :genre_id, [["ケーキ", 1], ["プリン", 2], ["焼き菓子", 3], ["キャンディ", 4]] %>
 
   <h4>税抜価格</h4>
-  <%= f.text_field :price, placeholder: '1000' %><p>円</p>
+  <%= f.text_field :price, placeholder: '1000' %>
+  <%= f.label :price, "円" %>
 
   <h4>販売ステータス</h4>
+  <%= f.radio_button :is_active, true %>
+  <%= f.label :is_active, '販売中' %>
+
+  <%= f.radio_button :is_active, false %>
+  <%= f.label :is_active, '販売停止中' %>
 
   <%= f.submit "新規登録" %>
 

@@ -1,15 +1,23 @@
 <h1>商品詳細</h1>
 
-<h2>画像</h2>
+<%= attachment_image_tag @item, :image, :fill, 150, 120 %>
 
 <h3>商品名</h3>
+<%= @item.name %>
 
 <h3>商品説明</h3>
+<%= @item.introduction %>
 
-<h3ジャンル></h3>
+<h3>ジャンル</h3>
+<%= @item.genre.name %>
 
 <h3>税込価格</h3>
+<%= (@item.price)*1.08 %>
 
 <h3>(税抜価格)</h3>
+<%= @item.price %>
 
 <h3>販売ステータス</h3>
+<%= @item.is_active ? '販売中' : '販売停止中' %>
+
+<%= link_to "編集する", edit_admin_item_path(@item) %>

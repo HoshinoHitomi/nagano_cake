@@ -9,13 +9,13 @@ Rails.application.routes.draw do
   devise_for(
     :customers,
     path: 'customers',
-    module: 'public/customers'
+    module: 'public/customers',
   )
 
   namespace :admin do
 
     root "homes#top"
-    
+
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
   end
@@ -24,8 +24,13 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get '/about' => "homes#about"
-    
+
     resources :items, only: [:index, :show]
+
+    resource :customers, only: [:show, :edit, :update]
+    get 'customers/confirm' => "customers#confirm"
+    patch '/customers' => "customers#withdrawl"
+
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

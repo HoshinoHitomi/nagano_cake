@@ -41,6 +41,9 @@ Rails.application.routes.draw do
     patch '/customers' => "customers#withdrawl", as: :withdrawl_customers
 
     resources :addresses, except: [:new, :show]
+
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete '/cart_items/:id' => "cart_items#destroy_all", as: :destroy_all_cart_item
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

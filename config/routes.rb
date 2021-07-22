@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :admin do
 
     root "homes#top"
+    
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
   end
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
+    get '/about' => "homes#about"
+    
     resources :items, only: [:index, :show]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

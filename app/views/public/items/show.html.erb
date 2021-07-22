@@ -1,0 +1,9 @@
+<h1>商品詳細</h1>
+
+<%= attachment_image_tag @item, :image, :fill, 150, 120 %>
+
+<%= @item.name %>
+
+<%= @item.introduction %>
+
+￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)

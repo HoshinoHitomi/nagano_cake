@@ -12,7 +12,7 @@
 <%= @item.genre.name %>
 
 <h3>税込価格</h3>
-<%= (@item.price)*1.08 %>
+<%= @item.add_tax_price.to_s(:delimited) %>円
 
 <h3>(税抜価格)</h3>
 <%= @item.price %>

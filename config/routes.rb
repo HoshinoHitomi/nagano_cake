@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     get 'customers/confirm' => "customers#confirm", as: :confirm_customers
     patch '/customers' => "customers#withdrawl", as: :withdrawl_customers
 
+    resources :addresses, except: [:new, :show]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

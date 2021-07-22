@@ -10,7 +10,16 @@ Rails.application.routes.draw do
     :customers,
     path: 'customers',
     module: 'public/customers',
-  )
+    skip: :all
+    )
+  devise_scope :customer do
+    get '/customers/sign_up' => 'public/customers/registrations#new', as: :new_customer_registration
+    post '/customers' => 'public/customers/registrations#create', as: :customer_registration
+
+    get '/customers/sign_in' => 'public/customers/sessions#new', as: :new_customer_session
+    post '/customers/sign_in' => 'public/customers/sessions#create', as: :customer_session
+    delete '/customers/sign_out' => 'public/customers/sessions#destroy', as: :destroy_customer_session
+  end
 
   namespace :admin do
 
@@ -28,8 +37,8 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
 
     resource :customers, only: [:show, :edit, :update]
-    get 'customers/confirm' => "customers#confirm"
-    patch '/customers' => "customers#withdrawl"
+    get 'customers/confirm' => "customers#confirm", as: :confirm_customers
+    patch '/customers' => "customers#withdrawl", as: :withdrawl_customers
 
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

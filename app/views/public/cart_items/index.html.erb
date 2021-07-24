@@ -13,9 +13,13 @@
         <th>小計</th>
     </tr>
 
-    <% @cart_item.each_index(1) do |cart_item, i| %>
+    <% @cart_item.each do |cart_item| %>
     <tr>
         <th><%= cart_item[:name] %></th>
+        <th><%= cart_item[:price] %></th>
+        <th><%= cart_item[:amount] %></th>
+        <th><%= cart_item[:sub_total] %></th>
     </tr>
     <% end %>
 </table>
+<%= @cart_item_total_price %>

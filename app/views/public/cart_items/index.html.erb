@@ -5,6 +5,8 @@
     <h1>カートが空です</h1>
     <% else %>
 
+    <%= link_to "カートを空にする", destroy_all_cart_item_path(@cart_item), method: :delete %>
+
     <table>
         <tr>
             <th>商品名</th>
@@ -27,7 +29,13 @@
             <% end %>
 
             <th><%= cart_item[:sub_total] %></th>
-            <th></th>
+
+            <%= form_with url: cart_item_path(@cart_item), method: :delete, local:true do |f| %>
+                <th>
+                    <%= hidden_field_tag :item_id, cart_item[:item_id] %>
+                    <%= f.submit "削除する" %>
+                </th>
+            <% end %>
         </tr>
         <% end %>
     </table>

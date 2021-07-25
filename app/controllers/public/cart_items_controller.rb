@@ -1,5 +1,7 @@
 class Public::CartItemsController < ApplicationController
+
   def index
+
     return if session[:cart_item].blank?
 
     @cart_item = []
@@ -52,22 +54,32 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    
     array_index = session[:cart_item].each_index.select {|i| session[:cart_item][i]["item_id"] == params["item_id"] }
-    
+
     session[:cart_item][array_index[0]]["amount"] = params["amount"]
-    
+
     redirect_to cart_items_path
-    
+
   end
 
   def destroy
+
     array_index = session[:cart_item].each_index.select { |i| session[:cart_item][i]["item_id"] == params["item_id"] }
+
     session[:cart_item].delete_at(array_index[0])
+
     redirect_to cart_items_path
+
   end
 
   def destroy_all
+
+    array_index = session[:cart_item].each_index.select { |i| session[:cart_item][i]["item_id"] == params["item_id"] }
+
+    session[:cart_item].destroy_all(array_index[0])
+
+    redirect_to cart_items_path
+
   end
 
 end

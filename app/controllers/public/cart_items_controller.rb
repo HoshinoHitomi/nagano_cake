@@ -54,6 +54,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
+
     array_index = session[:cart_item].each_index.select {|i| session[:cart_item][i]["item_id"] == params["item_id"] }
 
     session[:cart_item][array_index[0]]["amount"] = params["amount"]
@@ -74,9 +75,7 @@ class Public::CartItemsController < ApplicationController
 
   def destroy_all
 
-    array_index = session[:cart_item].each_index.select { |i| session[:cart_item][i]["item_id"] == params["item_id"] }
-
-    session[:cart_item].destroy_all(array_index[0])
+    session[:cart_item] = nil
 
     redirect_to cart_items_path
 

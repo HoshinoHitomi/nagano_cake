@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
   def index
     @items = Item.all
-e  end
+  end
 
   def new
     @item = Item.new

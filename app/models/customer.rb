@@ -8,4 +8,8 @@ class Customer < ApplicationRecord
          has_many :addresses
          has_many :orders
 
+  def name
+    last_name + first_name
+  end
+
 end

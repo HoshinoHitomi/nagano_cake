@@ -1,0 +1,60 @@
+<p>Find me in app/views/admin/customers/edit.html.erb</p>
+
+<h1>会員情報編集</h1>
+<%= form_with model: @customer, url: customers_path, local:true do |f| %>
+
+  <%= @customer.id %>
+
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, placeholder: "令和" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, placeholder: "道子" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name_kana %>
+    <%= f.text_field :last_name_kana, placeholder: "レイワ" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_kana %>
+    <%= f.text_field :first_name_kana, placeholder: "ミチコ" %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :postal_code %>
+    <%= f.text_field :postal_code, placeholder: "0000000" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telephone_number %>
+    <%= f.text_field :telephone_number, placeholder: "00000000000" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.radio_button :is_active, :true, checked: true %>
+    <%= f.label :true %>
+  
+    <%= f.radio_button :is_active, :false %>
+    <%= f.label :false %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "変更を保存" %>
+  </div>
+<% end %>

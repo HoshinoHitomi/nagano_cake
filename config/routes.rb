@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     end
 
     resources :orders, only: [:new, :create, :index, :show]
+    post '/orders/confirm' => "orders#confirm", as: :confirm_order
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

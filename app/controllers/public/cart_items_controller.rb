@@ -9,21 +9,21 @@ class Public::CartItemsController < ApplicationController
     session[:cart_item].each do |cart_item|
       
       item = Item.find_by(id: cart_item["item_id"])
-      
+
       sub_total = item.price * cart_item["amount"].to_i
-      
+
       next unless item
 
       @cart_item.push({ item_id: item.id,
-      
+
                         name: item.name,
-                        
+
                         price: item.price,
-                        
+
                         amount: cart_item["amount"].to_i,
-                        
+
                         sub_total: sub_total
-                        
+
       })
     end
 
@@ -32,9 +32,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def cart_item_total_price(cart_item)
-    
+
     cart_item.sum { |hash| hash[:sub_total] }
-    
+
   end
 
 
@@ -43,7 +43,7 @@ class Public::CartItemsController < ApplicationController
     if session[:cart_item].blank?
 
       session[:cart_item] = [ { item_id: params["item_id"], amount: params["amount"].to_i } ]
-      
+
       return redirect_to cart_items_path
 
     end
@@ -86,7 +86,7 @@ class Public::CartItemsController < ApplicationController
 
   def destroy_all
 
-    session[:cart_item] = nil
+    session[:cart_item].clear
 
     redirect_to cart_items_path
 

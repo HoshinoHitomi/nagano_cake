@@ -8,6 +8,12 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
 
     @addresses = Address.all
+
+  end
+
+  def confirm
+    @cart_items = session[:cart_item]
+
   end
 
   def create

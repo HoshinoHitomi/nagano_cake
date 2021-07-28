@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
         admin_root_path
 
       when Customer
-        root_path
+        items_path
       end
     end
 

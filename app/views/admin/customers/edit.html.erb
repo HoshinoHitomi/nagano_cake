@@ -1,7 +1,7 @@
 <p>Find me in app/views/admin/customers/edit.html.erb</p>
 
 <h1>会員情報編集</h1>
-<%= form_with model: @customer, url: customers_path, local:true do |f| %>
+<%= form_with model: @customer, url: admin_customer_path(@customer), local:true do |f| %>
 
   <%= @customer.id %>
 
@@ -47,11 +47,9 @@
   </div>
 
   <div class="field">
-    <%= f.radio_button :is_active, :true, checked: true %>
-    <%= f.label :true %>
-  
-    <%= f.radio_button :is_active, :false %>
-    <%= f.label :false %>
+    <%= f.radio_button :is_active, :true, checked: true %>有効
+
+    <%= f.radio_button :is_active, :false %>退会
   </div>
 
   <div class="actions">

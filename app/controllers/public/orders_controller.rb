@@ -12,7 +12,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @cart_items = session[:cart_item]
+
+    @cart_items = Item.find(session[:cart_item])
 
   end
 

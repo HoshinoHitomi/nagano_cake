@@ -35,6 +35,7 @@ class Public::OrdersController < ApplicationController
 
     @order.payment = params[:order][:payment]
 
+    @order.shipping_cost = Order.select(:shipping_cost)
     if params[:order][:address_option] == "0"
 
       @order.postal_code = current_customer.postal_code

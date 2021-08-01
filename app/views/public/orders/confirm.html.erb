@@ -18,6 +18,26 @@
   <% end %>
 </table>
 
+<table>
+  <tr>
+    <th>送料</th>
+    <td><%= @order.shipping_cost %></td>
+  </tr>
+  
+  <tr>
+    <th>商品合計</th>
+    <td><%= @order.address %></td>
+  </tr>
+  
+  <tr>
+    <th>請求金額</th>
+    <td></td>
+  </tr>
+  
+</table>
+
 <%= @order.payment %>
 
+<%= @order.postal_code %>
+<%= @order.address %>
 <%= @order.name %>

@@ -35,13 +35,13 @@ class Public::OrdersController < ApplicationController
 
     @order.payment = params[:order][:payment]
 
-    if params[:order][:address] == "0"
+    if params[:order][:address_option] == "0"
 
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.name
 
-    elsif params[:order][:address] == "1"
+    elsif params[:order][:address_option] == "1"
 
       @sta = params[:order][:address].to_i
       @order_address = Address.find(@sta)
@@ -49,11 +49,11 @@ class Public::OrdersController < ApplicationController
       @order.address = @order_address.address
       @order.name = @order_address.name
 
-    else params[:order][:address] = "2"
+    else params[:order][:address_option] = "2"
 
-      @order.postal_code = params[:order][:postal_code]
-      @order.address = params[:order][:address]
-      @order.name = params[:order][:name]
+      @order.postal_code = params[:order][:new_postal_code]
+      @order.address = params[:order][:new_address]
+      @order.name = params[:order][:new_name]
 
     end
   end

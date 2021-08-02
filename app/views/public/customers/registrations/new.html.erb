@@ -4,60 +4,52 @@
   <%= render "public/customers/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :last_name %>
+    <%= f.label :name, "氏名" %>
     <%= f.text_field :last_name, placeholder: "令和" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name %>
     <%= f.text_field :first_name, placeholder: "道子" %>
   </div>
 
   <div class="field">
-    <%= f.label :last_name_kana %>
+    <%= f.label :name_kana, "フリガナ" %>
     <%= f.text_field :last_name_kana, placeholder: "レイワ" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name_kana %>
     <%= f.text_field :first_name_kana, placeholder: "ミチコ" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autocomplete: "email" %>
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.email_field :email, autocomplete: "email", placeholder: "sample@sample" %>
   </div>
 
   <div class="field">
-    <%= f.label :postal_code %>
+    <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
     <%= f.text_field :postal_code, placeholder: "0000000" %>
   </div>
 
   <div class="field">
-    <%= f.label :address %>
+    <%= f.label :address, "住所" %>
     <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
   </div>
 
   <div class="field">
-    <%= f.label :telephone_number %>
+    <%= f.label :telephone_number, "電話番号(ハイフンなし)" %>
     <%= f.text_field :telephone_number, placeholder: "00000000000" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, "パスワード" %>
     <% if @minimum_password_length %>
-    (<%= @minimum_password_length %> characters minimum)
+    (<%= @minimum_password_length %>文字以上)
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "パスワード(確認用)" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
 

@@ -49,8 +49,9 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :orders, only: [:new, :create, :index, :show]
+    resources :orders, only: [:new, :create, :index]
     post '/orders/confirm' => "orders#confirm", as: :confirm_order
+    get '/orders/thanks' => "orders#thanks", as: :thanks_order
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -7,7 +7,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = []
 
     session[:cart_item].each do |cart_item|
-      
+
       item = Item.find_by(id: cart_item["item_id"])
 
       sub_total = item.price * cart_item["amount"].to_i
@@ -27,13 +27,13 @@ class Public::CartItemsController < ApplicationController
       })
     end
 
-    @cart_item_total_price = cart_item_total_price(@cart_item)
+    @total_price = total_price(@cart_item)
 
   end
 
-  def cart_item_total_price(cart_item)
+  def total_price(cart_item)
 
-    cart_item.sum { |hash| hash[:sub_total] }
+    cart_item.sum { |price| price[:sub_total] }
 
   end
 

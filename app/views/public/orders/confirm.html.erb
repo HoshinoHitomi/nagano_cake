@@ -1,43 +1,45 @@
 <h1>注文情報確認</h1>
 
-<table>
-  <tr>
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>個数</th>
-    <th>小計</th>
-  </tr>
+  <table>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
 
-  <% @cart_items.each do |cart_item| %>
-  <tr>
-    <td><%= cart_item[:name] %></td>
-    <td><%= cart_item[:price] %></td>
-    <td><%= cart_item[:amount] %></td>
-    <td><%= cart_item[:sub_total]%></td>
-  </tr>
-  <% end %>
-</table>
+    <% @cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= cart_item[:name] %></td>
+      <td><%= cart_item[:price] %></td>
+      <td><%= cart_item[:amount] %></td>
+      <td><%= cart_item[:sub_total]%></td>
+    </tr>
+    <% end %>
+  </table>
 
-<table>
-  <tr>
-    <th>送料</th>
-    <td><%= @order.shipping_cost %></td>
-  </tr>
-  
-  <tr>
-    <th>商品合計</th>
-    <td><%= @order.address %></td>
-  </tr>
-  
-  <tr>
-    <th>請求金額</th>
-    <td></td>
-  </tr>
-  
-</table>
+  <table>
+    <tr>
+      <th>送料</th>
+      <td><%= @order.shipping_cost %></td>
+    </tr>
 
-<%= @order.payment %>
+    <tr>
+      <th>商品合計</th>
+      <td><%= @total_price %></td>
+    </tr>
 
-<%= @order.postal_code %>
-<%= @order.address %>
-<%= @order.name %>
+    <tr>
+      <th>請求金額</th>
+      <td><%= @order.total_payment %></td>
+    </tr>
+
+  </table>
+
+  <h2>支払方法</h2>
+  <%= @order.payment %><br>
+
+  <h2>お届け先</h2>
+  〒<%= @order.postal_code %>
+  <%= @order.address %>
+  <%= @order.name %>

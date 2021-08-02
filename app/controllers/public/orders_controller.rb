@@ -13,6 +13,14 @@ class Public::OrdersController < ApplicationController
 
   end
 
+
+  def total_price(cart_item)
+
+    cart_item.sum { |price| price[:sub_total] }
+
+  end
+
+
   def confirm
     @order = Order.new(order_params)
 
@@ -24,7 +32,7 @@ class Public::OrdersController < ApplicationController
 
         next unless item
 
-        @cart_items.push({ item_id: item.id,
+        @cart_items.push({item_id: item.id,
                           image_id: item.image_id,
                           name: item.name,
                           price: item.price,
@@ -33,9 +41,15 @@ class Public::OrdersController < ApplicationController
         })
     end
 
-    @order.payment = params[:order][:payment]
+      @order.payment = params[:order][:payment]
 
-    @order.shipping_cost = Order.select(:shipping_cost)
+      @order.shipping_cost = 800
+
+      @total_price = total_price(@cart_items)
+
+      @order.total_payment = @order.shipping_cost + @total_price
+
+
     if params[:order][:address_option] == "0"
 
       @order.postal_code = current_customer.postal_code
@@ -44,7 +58,7 @@ class Public::OrdersController < ApplicationController
 
     elsif params[:order][:address_option] == "1"
 
-      @sta = params[:order][:address].to_i
+      @sta = params[:order][:address]
       @order_address = Address.find(@sta)
       @order.postal_code = @order_address.postal_code
       @order.address = @order_address.address
@@ -72,6 +86,12 @@ class Public::OrdersController < ApplicationController
 
         )
     end
+  end
+
+  def show
+  end
+
+  def thanks
   end
 
   private

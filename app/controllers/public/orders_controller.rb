@@ -81,7 +81,6 @@ class Public::OrdersController < ApplicationController
   def create
     order = Order.create!(order_params)
 
-binding.pry
     session[:cart_item].each do |cart_item|
       order.order_items.create(
         item_id: cart_item["item_id"],

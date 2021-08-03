@@ -24,6 +24,8 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
 
+    @order.customer_id = current_customer.id
+
     @cart_items = []
 
       session[:cart_item].each do |cart_item|
@@ -71,21 +73,27 @@ class Public::OrdersController < ApplicationController
       @order.name = params[:order][:new_name]
 
     end
+
+    @order.status = "payment_waiting"
+
   end
 
   def create
+    order = Order.create!(order_params)
 
-
-    order = current_customer.orders.create!(
-      order_date: Time.current
-      )
-
+binding.pry
     session[:cart_item].each do |cart_item|
       order.order_items.create(
         item_id: cart_item["item_id"],
-
+        amount: cart_item["amount"],
+        price: cart_item["price"],
+        making_status: "cannot_making",
         )
     end
+
+    session[:cart_item].clear
+
+    redirect_to thanks_order_path
   end
 
   def show
@@ -98,11 +106,14 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(
+      :customer_id,
       :postal_code,
       :address,
       :name,
+      :shipping_cost,
       :total_payment,
-      :payment
+      :payment,
+      :status
       )
   end
 

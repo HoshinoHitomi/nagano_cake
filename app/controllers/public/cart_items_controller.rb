@@ -42,7 +42,7 @@ class Public::CartItemsController < ApplicationController
 
     if session[:cart_item].blank?
 
-      session[:cart_item] = [ { item_id: params["item_id"], amount: params["amount"].to_i } ]
+      session[:cart_item] = [ { item_id: params["item_id"], amount: params["amount"].to_i, price: params["price"] } ]
 
       return redirect_to cart_items_path
 

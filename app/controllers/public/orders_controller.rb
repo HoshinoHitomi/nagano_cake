@@ -45,7 +45,7 @@ class Public::OrdersController < ApplicationController
 
       @order.shipping_cost = 800
 
-      @total_price = total_price(@cart_items)
+        @total_price = total_price(@cart_items)
 
       @order.total_payment = @order.shipping_cost + @total_price
 
@@ -58,8 +58,8 @@ class Public::OrdersController < ApplicationController
 
     elsif params[:order][:address_option] == "1"
 
-      @sta = params[:order][:address]
-      @order_address = Address.find(@sta)
+      @selection = params[:order][:address]
+      @order_address = Address.find(@selection)
       @order.postal_code = @order_address.postal_code
       @order.address = @order_address.address
       @order.name = @order_address.name

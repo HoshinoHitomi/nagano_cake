@@ -1,0 +1,6 @@
+ja:
+  enums:
+    order:
+      payment:
+        credit: クレジットカード
+        bank: 銀行振込

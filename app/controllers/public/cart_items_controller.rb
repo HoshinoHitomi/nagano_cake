@@ -16,6 +16,8 @@ class Public::CartItemsController < ApplicationController
 
       @cart_item.push({ item_id: item.id,
 
+                        image_id: item.image_id,
+
                         name: item.name,
 
                         price: item.add_tax_price,

@@ -13,20 +13,13 @@ class Public::CartItemsController < ApplicationController
       sub_total = item.add_tax_price * cart_item["amount"].to_i
 
       next unless item
-
       @cart_item.push({ item_id: item.id,
-
                         image_id: item.image_id,
-
                         name: item.name,
-
                         price: item.add_tax_price,
-
                         amount: cart_item["amount"].to_i,
-
                         sub_total: sub_total
-
-      })
+                        })
     end
 
     @total_price = total_price(@cart_item)
@@ -44,7 +37,11 @@ class Public::CartItemsController < ApplicationController
 
     if session[:cart_item].blank?
 
-      session[:cart_item] = [ { item_id: params["item_id"], amount: params["amount"].to_i, price: params["price"] } ]
+      session[:cart_item] = [ {
+                            item_id: params["item_id"],
+                            amount: params["amount"].to_i,
+                            price: params["price"]
+                            } ]
 
       return redirect_to cart_items_path
 

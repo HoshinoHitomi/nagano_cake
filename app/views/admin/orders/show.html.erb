@@ -33,19 +33,19 @@
 <% @order_items.each do |order_item| %>
   <tr>
     <td><%= order_item.item.name %></td>
-    <td><%= order_item.item.add_tax_price %></td>
+    <td><%= order_item.item.add_tax_price.to_s(:delimited) %></td>
     <td><%= order_item.amount %></td>
-    <td><%= order_item.amount * order_item.item.add_tax_price%></td>
+    <td><%= (order_item.amount * order_item.item.add_tax_price).to_s(:delimited) %></td>
     <td><%= order_item.making_status_i18n %></td>
   </tr>
 <% end %>
 </table>
 
 <h3>商品合計</h3>
-<%= @order_items.sum(:price) %>
+<%= @order_items.sum(:price).to_s(:delimited) %>
 
 <h3>送料</h3>
 <%= @order.shipping_cost %>
 
 <h3>請求金額合計</h3>
-<%= @order.total_payment %>
+<%= @order.total_payment.to_s(:delimited) %>

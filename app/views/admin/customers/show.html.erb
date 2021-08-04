@@ -1,25 +1,23 @@
-<p>Find me in app/views/admin/customers/show.html.erb</p>
-
 <h1><%= @customer.name %>さんの会員詳細</h1>
 
-<%= @customer.id %>
+<%= @customer.id %><br>
 
 <%= @customer.last_name %>
 
-<%= @customer.first_name %>
+<%= @customer.first_name %><br>
 
 <%= @customer.last_name_kana %>
 
-<%= @customer.first_name_kana %>
+<%= @customer.first_name_kana %><br>
 
-<%= @customer.postal_code %>
+<%= @customer.postal_code %><br>
 
-<%= @customer.address %>
+<%= @customer.address %><br>
 
-<%= @customer.telephone_number %>
+<%= @customer.telephone_number %><br>
 
-<%= @customer.email %>
+<%= @customer.email %><br>
 
-<%= @customer.is_active %>
+<%= @customer.is_active ? "有効" : "退会" %><br>
 
 <%= link_to "編集する", edit_admin_customer_path(@customer) %>

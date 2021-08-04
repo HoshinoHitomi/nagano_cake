@@ -30,14 +30,14 @@ class Public::OrdersController < ApplicationController
 
       session[:cart_item].each do |cart_item|
         item = Item.find_by(id: cart_item["item_id"])
-        sub_total = item.price * cart_item["amount"].to_i
+        sub_total = item.add_tax_price * cart_item["amount"].to_i
 
         next unless item
 
         @cart_items.push({item_id: item.id,
                           image_id: item.image_id,
                           name: item.name,
-                          price: item.price,
+                          price: item.add_tax_price,
                           amount: cart_item["amount"].to_i,
                           sub_total: sub_total
         })

@@ -10,7 +10,7 @@ class Public::CartItemsController < ApplicationController
 
       item = Item.find_by(id: cart_item["item_id"])
 
-      sub_total = item.price * cart_item["amount"].to_i
+      sub_total = item.add_tax_price * cart_item["amount"].to_i
 
       next unless item
 
@@ -18,7 +18,7 @@ class Public::CartItemsController < ApplicationController
 
                         name: item.name,
 
-                        price: item.price,
+                        price: item.add_tax_price,
 
                         amount: cart_item["amount"].to_i,
 

@@ -33,9 +33,9 @@
 <% @order_items.each do |order_item| %>
   <tr>
     <td><%= order_item.item.name %></td>
-    <td><%= order_item.item.price %></td>
+    <td><%= order_item.item.add_tax_price %></td>
     <td><%= order_item.amount %></td>
-    <td><%= order_item.amount * order_item.item.price %></td>
+    <td><%= order_item.amount * order_item.item.add_tax_price%></td>
     <td><%= order_item.making_status_i18n %></td>
   </tr>
 <% end %>

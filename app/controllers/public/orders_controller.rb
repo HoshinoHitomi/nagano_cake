@@ -95,10 +95,17 @@ class Public::OrdersController < ApplicationController
     redirect_to thanks_order_path
   end
 
-  def show
+  def thanks
   end
 
-  def thanks
+  def index
+    @customer = current_customer
+    @orders = @customer.orders.page(params[:page])
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
   end
 
   private

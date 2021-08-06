@@ -14,6 +14,7 @@
         <% @cart_item.each do |cart_item| %>
         <tr>
             <th>
+                <!--画像を表示させたい-->
                 <%= attachment_image_tag cart_item[:image], :image, size: "800x800" %>
                 <%= cart_item[:name] %>
             </th>

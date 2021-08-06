@@ -41,6 +41,7 @@
 <% end %>
 </table>
 
+<!--合計を出す-->
 <h3>商品合計</h3>
 <%= @order_items.sum(:price).to_s(:delimited) %>
 

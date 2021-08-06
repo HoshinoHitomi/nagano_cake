@@ -1,21 +1,33 @@
-<table>
-  <tr>
-    <th>ジャンル検索</th>
-  </tr>
-  <% @genres.each do |genre| %>
-  <tr>
-    <td><%= genre.name %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'public/genre', genres: @genres %>
+    </div>
 
-<p>
-ようこそ、ながのCAKEへ！<br>
-このサイトは、ケーキ販売のECサイトになります。<br>
-会員でない方も商品の閲覧はできますが、<br>
-購入には会員登録が必要になります。<br>
-</p>
+    <div class="col-9">
+      <div class="p-5">
+        <p class="text-center m-4">
+        ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。<br>
+        </p>
+      </div>
 
-<h1>新着商品</h1>
+      <h1>新着商品</h1>
 
-<p>すべての商品を見る</p>
+      <div class="row">
+        <% @items.each do |item| %>
+        <div class="col-md-3">
+          <%= attachment_image_tag item, :image, :fill, 150, 120 %><br>
+          <%= item.name %><br>
+          ￥<%= item.price.to_s(:delimited) %>
+        </div>
+        <% end %>
+      </div>
+
+      <%= link_to "すべての商品を見る >", items_path, class: 'float-right' %>
+    </div>
+  </div>
+</div>
+

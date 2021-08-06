@@ -16,3 +16,10 @@
   @import "bootstrap";
   @import 'font-awesome-sprockets';
   @import 'font-awesome';
+
+  h2 {
+    margin-left: 100px;
+    margin-right: auto;
+    background-color : #dcdcdc;
+    display: inline;
+  }

@@ -3,4 +3,8 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_items = @order.order_items
   end
+
+  def index
+  end
+
 end

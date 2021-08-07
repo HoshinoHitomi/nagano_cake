@@ -1,19 +1,22 @@
-<h1>会員一覧</h1>
+<div class="container mt-4">
 
-<table>
-  <tr>
-    <th>会員ID</th>
-    <th>氏名</th>
-    <th>メールアドレス</th>
-    <th>ステータス</th>
-  </tr>
+  <h3>会員一覧</h3>
 
-  <% @customers.each do |customer| %>
-  <tr>
-    <td><%= customer.id %></td>
-    <td><%= link_to customer.name, admin_customer_path(customer) %></td>
-    <td><%= customer.email %></td>
-    <td><%= customer.is_active ? "有効" : "退会" %></td>
-  </tr>
-  <% end %>
-</table>
+  <table class="table m-4">
+    <tr class="table-light">
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+
+    <% @customers.each do |customer| %>
+    <tr>
+      <td><%= customer.id %></td>
+      <td><%= link_to customer.name, admin_customer_path(customer) %></td>
+      <td><%= customer.email %></td>
+      <td><%= customer.is_active ? "有効" : "退会" %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

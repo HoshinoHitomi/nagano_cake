@@ -40,7 +40,8 @@
                 </li>
 
               <% elsif customer_signed_in? %>
-                ようこそ、<%= current_customer.last_name %>さん！
+
+                <p>ようこそ、<%= current_customer.last_name %>さん！</p>
 
                 <li class="nav-item">
                   <%= link_to 'マイページ', customers_path, class: 'btn btn-outline-secondary mr-4' %>

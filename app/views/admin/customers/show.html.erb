@@ -1,23 +1,32 @@
-<h1><%= @customer.name %>さんの会員詳細</h1>
+<div class="container mt-4">
+  <h3><%= @customer.name %>さんの会員詳細</h3>
 
-<%= @customer.id %><br>
+  <div class="row m-4">
+    <div class="col-2">
+      <p>会員ID</p>
+      <p>氏名</p>
+      <p>フリガナ</p>
+      <p>郵便番号</p>
+      <p>住所</p>
+      <p>電話番号</p>
+      <p>メールアドレス</p>
+      <p>会員ステータス</p>
 
-<%= @customer.last_name %>
+    </div>
 
-<%= @customer.first_name %><br>
+    <div class="col">
+      <p><%= @customer.id %></p>
+      <p><%= @customer.last_name %><%= @customer.first_name %></p>
+      <p><%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
+      <p><%= @customer.postal_code %></p>
+      <p><%= @customer.address %></p>
+      <p><%= @customer.telephone_number %></p>
+      <p><%= @customer.email %></p>
+      <p><%= @customer.is_active ? "有効" : "退会" %></p>
+    </div>
+  </div>
 
-<%= @customer.last_name_kana %>
+  <%= link_to "編集する", edit_admin_customer_path(@customer), class: 'btn btn-success' %>
 
-<%= @customer.first_name_kana %><br>
-
-<%= @customer.postal_code %><br>
-
-<%= @customer.address %><br>
-
-<%= @customer.telephone_number %><br>
-
-<%= @customer.email %><br>
-
-<%= @customer.is_active ? "有効" : "退会" %><br>
-
-<%= link_to "編集する", edit_admin_customer_path(@customer) %>
+  <%= link_to "注文履歴一覧を見る", admin_orders_path, class: 'btn btn-primary' %>
+</div>

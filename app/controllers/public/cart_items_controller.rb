@@ -21,7 +21,6 @@ class Public::CartItemsController < ApplicationController
                         sub_total: sub_total
                         })
     end
-
     @total_price = total_price(@cart_item)
 
   end

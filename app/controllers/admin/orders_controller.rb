@@ -5,6 +5,8 @@ class Admin::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.all
+    @order_items = OrderItem.all
   end
 
 end

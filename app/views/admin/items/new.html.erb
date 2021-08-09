@@ -1,30 +1,64 @@
-<h1>商品新規登録</h1>
+<div class="container mt-4">
 
-<%= form_with model: @item, url: admin_items_path, local:true do |f| %>
+  <h3>商品新規登録</h3>
 
-  <h4>商品画像</h4>
-  <%= f.attachment_field :image %>
+  <div class="row m-4">
 
-  <h4>商品名</h4>
-  <%= f.text_field :name, placeholder: '商品名' %>
+      <div class="col-3"></div>
 
-  <h4>商品説明</h4>
-  <%= f.text_area :introduction, placeholder: 'ここに説明文を記述します' %>
+    <div class="col-6">
 
-  <h4>ジャンル</h4>
-  <%= f.collection_select(:genre_id, @genres, :id, :name) %>
+      <%= form_with model: @item, url: admin_items_path, local:true do |f| %>
 
-  <h4>税抜価格</h4>
-  <%= f.text_field :price, placeholder: '1000' %>
-  <%= f.label :price, "円" %>
+        <table class="table table-borderless">
+          <tr>
+            <th>商品画像</th>
 
-  <h4>販売ステータス</h4>
-  <%= f.radio_button :is_active, :true, checked: true %>
-  <%= f.label :is_active, '販売中' %>
+            <td><%= f.attachment_field :image %></td>
+          </tr>
 
-  <%= f.radio_button :is_active, :false %>
-  <%= f.label :is_active, '販売停止中' %>
+          <tr>
+            <th>商品名</th>
 
-  <%= f.submit "新規登録" %>
+            <td><%= f.text_field :name %></td>
+          </tr>
 
-<% end %>
+          <tr>
+            <th>商品説明</th>
+
+            <td><%= f.text_area :introduction %></td>
+          </tr>
+
+          <tr>
+            <th>ジャンル</th>
+
+            <td><%= f.collection_select(:genre_id, @genres, :id, :name) %></td>
+          </tr>
+
+          <tr>
+            <th>税抜価格</th>
+
+            <td><%= f.text_field :price %>円</td>
+          </tr>
+
+          <tr>
+            <th>販売ステータス</th>
+
+            <td>
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :is_active, '販売中' %>
+
+              <%= f.radio_button :is_active, :false %>
+              <%= f.label :is_active, '販売停止中' %>
+            </td>
+          </tr>
+        </table>
+
+        <%= f.submit "変更を保存", class: 'btn btn-success' %>
+
+      <% end %>
+    </div>
+
+      <div class="col-3"></div>
+  </div>
+</div>

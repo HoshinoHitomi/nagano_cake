@@ -3,8 +3,14 @@ Rails.application.routes.draw do
   devise_for(
     :admins,
     path: 'admin',
-    module: 'admin/admins'
-  )
+    module: 'admin/admins',
+    skip: :all
+    )
+  devise_scope :admin do
+    get '/admin/sign_in' => 'admin/admins/sessions#new', as: :new_admin_session
+    post '/admin/sign_in' => 'admin/admins/sessions#create', as: :admin_session
+    delete '/admin/sign_out' => 'admin/admins/sessions#destroy', as: :destroy_admin_session
+  end
 
   devise_for(
     :customers,
@@ -28,7 +34,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:show, :index]
+    resources :orders, only: [:show]
   end
 
 

@@ -44,12 +44,14 @@
           <th>小計</th>
         </tr>
 
+      <% @sum = 0 %>
       <% @order_items.each do |order_item| %>
         <tr>
           <td><%= order_item.item.name %></td>
           <td><%= order_item.item.add_tax_price.to_s(:delimited) %></td>
           <td><%= order_item.amount %></td>
           <td><%= (order_item.amount * order_item.item.add_tax_price).to_s(:delimited) %></td>
+          <% @sum += (order_item.amount.to_i * order_item.item.add_tax_price) %>
         </tr>
       <% end %>
       </table>
@@ -61,7 +63,7 @@
         <tr>
           <th>商品合計</th>
           <!--合計を出す-->
-          <td><%= @order_items.sum(:price).to_s(:delimited) %></td>
+          <td><%= @sum.to_s(:delimited) %></td>
         </tr>
 
         <tr>

@@ -6,5 +6,5 @@
 </p>
 
 <%= link_to "退会しない", customers_path %>
-<!--仮置き-->
-<%= link_to "退会する", customers_path %>
+
+<%= link_to "退会する", withdrawl_customers_path, method: :patch, "data-confirm" => "本当に退会しますか？' %>

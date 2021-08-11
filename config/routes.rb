@@ -48,7 +48,7 @@ Rails.application.routes.draw do
 
     resource :customers, only: [:show, :edit, :update]
     get 'customers/confirm' => "customers#confirm", as: :confirm_customers
-    patch '/customers' => "customers#withdrawl", as: :withdrawl_customers
+    patch '/customers/withdrawl' => "customers#withdrawl", as: :withdrawl_customers
 
     resources :addresses, except: [:new, :show]
 

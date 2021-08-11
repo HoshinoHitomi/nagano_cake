@@ -45,21 +45,23 @@
         <th>小計</th>
         <th>製作ステータス</th>
       </tr>
+    <% @sum = 0 %>
     <% @order_items.each do |order_item| %>
       <tr>
         <td><%= order_item.item.name %></td>
         <td><%= order_item.item.add_tax_price.to_s(:delimited) %></td>
         <td><%= order_item.amount %></td>
         <td><%= (order_item.amount * order_item.item.add_tax_price).to_s(:delimited) %></td>
+        <% @sum += (order_item.amount.to_i * order_item.item.add_tax_price) %>
         <td><%= order_item.making_status_i18n %></td>
       </tr>
     <% end %>
     </table>
 
     <div class="col-5">
-      <!--合計を出す-->
+      
       <h4>商品合計</h4>
-      <%= @order_items.sum(:price).to_s(:delimited) %>
+      <%= @sum.to_s(:delimited) %>
 
       <h4>送料</h4>
       <%= @order.shipping_cost %>

@@ -1,32 +1,57 @@
 <div class="container mt-4">
   <h3><%= @customer.name %>さんの会員詳細</h3>
 
-  <div class="row m-4">
-    <div class="col-2">
-      <p>会員ID</p>
-      <p>氏名</p>
-      <p>フリガナ</p>
-      <p>郵便番号</p>
-      <p>住所</p>
-      <p>電話番号</p>
-      <p>メールアドレス</p>
-      <p>会員ステータス</p>
+  <table class="table table-borderless">
+    <tr>
+      <td width="200">会員ID</td>
+      <td><%= @customer.id %></td>
+    </tr>
 
-    </div>
+    <tr>
+      <td>氏名</td>
+      <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+    </tr>
 
-    <div class="col">
-      <p><%= @customer.id %></p>
-      <p><%= @customer.last_name %><%= @customer.first_name %></p>
-      <p><%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
-      <p><%= @customer.postal_code %></p>
-      <p><%= @customer.address %></p>
-      <p><%= @customer.telephone_number %></p>
-      <p><%= @customer.email %></p>
-      <p><%= @customer.is_active ? "有効" : "退会" %></p>
-    </div>
-  </div>
+    <tr>
+      <td>フリガナ</td>
+      <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+    </tr>
 
-  <%= link_to "編集する", edit_admin_customer_path(@customer), class: 'btn btn-success' %>
+    <tr>
+      <td>郵便番号</td>
+      <td><%= @customer.postal_code %></td>
+    </tr>
 
-  <%= link_to "注文履歴一覧を見る", admin_root_path(order: 'customer'), class: 'link btn btn-primary' %>
+    <tr>
+      <td>住所</td>
+      <td><%= @customer.address %></td>
+    </tr>
+
+    <tr>
+      <td>電話番号</td>
+      <td><%= @customer.telephone_number %></td>
+    </tr>
+
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= @customer.email %></td>
+    </tr>
+
+    <tr>
+      <td>会員ステータス</td>
+      <td><%= @customer.is_active ? "有効" : "退会" %></td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td>
+        <%= link_to "編集する", edit_admin_customer_path(@customer), class: 'btn btn-success col-2 mr-5' %>
+        <%= link_to "注文履歴一覧を見る", admin_root_path(order: 'customer'), class: 'link btn btn-primary ml-3' %>
+      </td>
+    </tr>
+  </table>
+
+
+
+
 </div>

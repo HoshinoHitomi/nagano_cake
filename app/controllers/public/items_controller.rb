@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate!, except: [:index]
 
   def index
     @all_items = Item.all
@@ -11,4 +12,11 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
   end
 
+  def authenticate!
+    if admin_signed_in?
+
+    else
+    	authenticate_customer!
+    end
+  end
 end

@@ -1,5 +1,5 @@
 <div class="container mt-4">
-  <h2>注文履歴一覧</h2>
+  <h3>注文履歴一覧</h3>
 
   <table class="table m-4">
     <tr class="table-light">
@@ -13,8 +13,7 @@
     <tr>
       <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id) %></td>
       <td><%= order.customer.name %></td>
-      <!--各注文個数の合計を出したい-->
-      <td><%= order.id %></td>
+      <td><%= order.order_items.sum(:amount) %></td>
       <td><%= order.status_i18n %></td>
     </tr>
     <% end %>

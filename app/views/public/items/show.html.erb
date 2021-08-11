@@ -5,26 +5,30 @@
         </div>
 
         <div class="col-9">
+            <div class="d-flex">
 
-            <div class="row">
+                <div class="box">
+                    <%= attachment_image_tag @item, :image, :fill, 300, 210, class: 'm-4' %>
                 </div>
-                <%= attachment_image_tag @item, :image, :fill, 300, 210 %>
 
-                <h5><%= @item.name %></h5>
+                <div class="box">
+                    <h5><%= @item.name %></h5>
 
-                <%= @item.introduction %><br>
+                    <%= @item.introduction %>
 
-                ￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
+                    ￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
 
-                <%= form_with url: cart_items_path, method: :post, local:true do |f| %>
-                    <%= f.number_field :amount, min: 1, placeholder: "個数選択" %>
+                    <%= form_with url: cart_items_path, method: :post, local:true do |f| %>
+                        <%= f.number_field :amount, min: 1, placeholder: "個数選択" %>
 
-                    <%= hidden_field_tag :item_id, @item.id %>
-                    <%= hidden_field_tag :price, @item.price %>
+                        <%= hidden_field_tag :item_id, @item.id %>
+                        <%= hidden_field_tag :price, @item.price %>
 
-                    <%= f.submit "カートに入れる", class: 'btn btn-success' %>
-                <% end %>
+                        <%= f.submit "カートに入れる", class: 'btn btn-success' %>
+                    <% end %>
 
+                </div>
+            </div>
         </div>
     </div>
 </div>

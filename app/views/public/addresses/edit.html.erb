@@ -1,15 +1,27 @@
-<h1>配送先編集</h1>
+<div class="container mt-4">
+  <h3>配送先編集</h3>
 
-<%= form_with model: @address, url: address_path(@address), local:true do |f| %>
+    <%= form_with model: @address, url: address_path(@address), local:true do |f| %>
 
-  <h4>郵便番号(ハイフンなし)</h4>
-  <%= f.text_field :postal_code, placeholder: '0000000' %>
+      <div class="form-horizontal m-4">
+        <div class="form-group">
+          <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: 'col-3' %>
+          <%= f.text_field :postal_code, placeholder: '0000000', class: 'col-3' %>
+        </div>
 
-  <h4>住所</h4>
-  <%= f.text_field :address, placeholder: '東京都渋谷区代々木神園町0-0' %>
+        <div class="form-group">
+          <%= f.label :address, "住所", class: 'col-3' %>
+          <%= f.text_field :address, placeholder: '東京都渋谷区代々木神園町0-0', class: 'col-6' %>
+        </div>
 
-  <h4>宛名</h4>
-  <%= f.text_field :name, placeholder: '令和道子' %>
+        <div class="form-group">
+          <%= f.label :name, "宛名", class: 'col-3' %>
+          <%= f.text_field :name, placeholder: '令和道子', class: 'col-3' %>
 
-  <%= f.submit "変更内容を保存" %>
-<% end %>
+        <%= f.submit "変更内容を保存", class: 'btn btn-success float-right col-3' %>
+        </div>
+
+      </div>
+    <% end %>
+
+</div>

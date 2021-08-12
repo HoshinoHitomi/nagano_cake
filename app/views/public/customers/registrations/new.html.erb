@@ -1,6 +1,6 @@
 <div class="container mt-4">
 
-  <h2>新規会員登録</h2>
+  <h3>新規会員登録</h3>
 
 <div class="form-horifontal m-5">
 
@@ -57,15 +57,15 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'col-3 ml-5' %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "新規登録", class: 'btn btn-success col-3' %>
+    <div class="form-group">
+      <%= f.submit "新規登録", class: 'btn btn-success col-3 offset-4' %>
     </div>
   <% end %>
 </div>
 
 
-  <h2>既に登録済みの方</h2>
-  <div class="row m-5">
+  <h3>既に登録済みの方</h3>
+  <div class="offset-1 mt-4 mb-4">
       <%= render "public/customers/shared/links" %>
   </div>
 

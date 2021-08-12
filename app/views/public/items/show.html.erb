@@ -12,21 +12,42 @@
                 </div>
 
                 <div class="box">
-                    <h5><%= @item.name %></h5>
+                    <table class="table table-borderless mt-2">
+                        <tr>
+                            <th><%= @item.name %></th>
+                        </tr>
 
-                    <%= @item.introduction %>
+                        <tr>
+                            <th><%= @item.introduction %></th>
+                        </tr>
 
-                    ￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)
+                        <tr>
+                            <th>￥<%= @item.add_tax_price.to_s(:delimited) %>(税込)</th>
+                        </tr>
 
-                    <%= form_with url: cart_items_path, method: :post, local:true do |f| %>
-                        <%= f.number_field :amount, min: 1, placeholder: "個数選択" %>
+                        <tr>
+                            <th>
+                            <%= form_with url: cart_items_path, method: :post, local:true do |f| %>
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                    <%= f.number_field :amount, min: 1, placeholder: "個数選択" %>
+                                    </div>
 
-                        <%= hidden_field_tag :item_id, @item.id %>
-                        <%= hidden_field_tag :price, @item.price %>
+                                    <%= hidden_field_tag :item_id, @item.id %>
+                                    <%= hidden_field_tag :price, @item.price %>
 
-                        <%= f.submit "カートに入れる", class: 'btn btn-success' %>
-                    <% end %>
-
+                                    <div class="form-group">
+                                        <% if @item.is_active || false %>
+                                            <%= f.submit "カートに入れる", class: 'btn btn-success' %>
+                                        <% else %>
+                                            <%= f.submit "カートに入れる", class: 'btn btn-success disabeld' %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            <% end %>
+                            </th>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

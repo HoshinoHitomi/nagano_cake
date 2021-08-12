@@ -5,4 +5,8 @@ class Address < ApplicationRecord
   validates :postal_code, format: /\A[0-9]+\z/
   validates :address, presence: true
   validates :name, presence: true
+
+  def all_address_info
+    self.postal_code + self.address + self.name
+  end
 end

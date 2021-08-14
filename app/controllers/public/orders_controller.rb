@@ -11,8 +11,6 @@ class Public::OrdersController < ApplicationController
 
     @customer = current_customer
 
-    @addresses = @customer.addresses.page(params[:page])
-
   end
 
 
@@ -70,13 +68,25 @@ class Public::OrdersController < ApplicationController
 
     else params[:order][:address_option] = "2"
 
+      @address = Address.new
+			@address.customer_id = current_customer.id
+			@address.postal_code = params[:order][:new_postal_code]
+			@address.address = params[:order][:new_address]
+			@address.name = params[:order][:new_name]
+			@address.save
+
       @order.postal_code = params[:order][:new_postal_code]
       @order.address = params[:order][:new_address]
       @order.name = params[:order][:new_name]
 
+      if @order.present?
+        render :new
+      end
+
     end
 
     @order.status = "payment_waiting"
+
 
   end
 

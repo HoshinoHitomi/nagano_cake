@@ -11,4 +11,11 @@ class Item < ApplicationRecord
   def add_tax_price
     (self.price*1.08).round
   end
+
+  with_options presence: true do
+    validates :name
+    validates :image
+    validates :introduction
+    validates :price
+  end
 end

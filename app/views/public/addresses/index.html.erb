@@ -1,4 +1,5 @@
 <div class="container mt-4">
+  <%= render 'layouts/error_messages', model: @address %>
 
   <h3>配送先登録/一覧</h3>
 
@@ -36,7 +37,7 @@
           <th width="100">宛名</th>
           <th width="300"></th>
         </tr>
-      <% @addresses.each do |address| %>
+      <% current_customer.addresses.all.each do |address| %>
         <tr>
           <td><%= address.postal_code %></td>
           <td><%= address.address %></td>

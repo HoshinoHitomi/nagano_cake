@@ -7,13 +7,16 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @genres = Genre.all
   end
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to admin_item_path(@item)
+    if @item.save
+      flash[:notice] = "商品を登録しました"
+      redirect_to admin_item_path(@item)
+    else
+      render :new
+    end
   end
 
   def show
@@ -22,13 +25,16 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @genres = Genre.all
   end
 
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
-    redirect_to admin_item_path(item)
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      flash[:notice] = "商品を編集しました"
+      redirect_to admin_item_path(@item)
+    else
+      render :edit
+    end
   end
 
   private

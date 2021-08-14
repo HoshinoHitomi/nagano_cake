@@ -1,4 +1,31 @@
 ja:
+  activerecord:
+    models:
+      address:
+      customer:
+      item:
+      genre:
+    attributes:
+      address:
+        postal_code: 郵便番号
+        address: 住所
+        name: 宛名
+      customer:
+        last_name: 姓
+        last_name_kana: 名
+        first_name: 姓(フリガナ)
+        first_name_kana: 名(フリガナ)
+        postal_code: 郵便番号
+        address: 住所
+        email: メールアドレス
+        telephone_number: 電話番号
+      item:
+        name: 商品名
+        image: 商品画像
+        introduction: 商品説明
+        price: 価格
+      genre:
+        name: ジャンル名
   enums:
     order:
       payment:

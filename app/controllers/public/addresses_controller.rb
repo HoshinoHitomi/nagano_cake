@@ -3,14 +3,17 @@ class Public::AddressesController < ApplicationController
 
   def index
     @address = Address.new
-    @addresses = current_customer.addresses.page(params[:page])
   end
 
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    @address.save
-    redirect_to addresses_path
+    if @address.save
+      flash[:notice] = "新しい配送先を登録しました"
+      redirect_to addresses_path
+    else
+      render :index
+    end
   end
 
   def edit
@@ -18,14 +21,19 @@ class Public::AddressesController < ApplicationController
   end
 
   def update
-    address = Address.find(params[:id])
-    address.update(address_params)
-    redirect_to addresses_path
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
+      flash[:notice] = "配送先を編集しました"
+      redirect_to addresses_path
+    else
+      render :edit
+    end
   end
 
   def destroy
     address = Address.find(params[:id])
     address.destroy
+    flash[:notice] = "配送先を削除しました"
     redirect_to addresses_path
   end
 

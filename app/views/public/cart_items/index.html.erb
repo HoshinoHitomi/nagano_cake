@@ -3,7 +3,9 @@
     <h3>ショッピングカート</h3>
 
     <% if @cart_item.blank? %>
-        <h1>カートが空です</h1>
+        <div class="m-4">
+            <h1>カートが空です</h1>
+        </div>
         <% else %>
 
         <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: 'btn btn-danger float-right' %>
@@ -53,8 +55,9 @@
             </tr>
         </table>
 
-        <%= link_to "買い物を続ける", root_path, class: 'btn btn-primary ml-5' %>
     <% end %>
+
+        <%= link_to "買い物を続ける", root_path, class: 'btn btn-primary ml-5' %>
 
     <div class="row m-5">
 

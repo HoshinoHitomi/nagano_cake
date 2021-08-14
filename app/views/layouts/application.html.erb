@@ -30,7 +30,16 @@
 
         </nav>
       </header>
-      <%= flash[:notice] %>
+
+      <% if notice %>
+
+        <div class="alert alert-success"><%= flash[:notice] %></div>
+
+      <% elsif alert %>
+
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+
+      <% end %>
 
       <%= yield %>
       </div>

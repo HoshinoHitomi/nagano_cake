@@ -5,7 +5,7 @@
   <% genres.each do |genre| %>
     <tr>
       <%= form_tag items_path, :method => 'get' do %>
-        <td><%= link_to genre.name, items_path('search': genre.id) %></td>
+        <td><%= link_to genre.name, search_path('search[value]': genre.id, 'search[how]': "match") %></td>
       <% end %>
     </tr>
   <% end %>

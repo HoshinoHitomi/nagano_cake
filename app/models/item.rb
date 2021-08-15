@@ -12,15 +12,6 @@ class Item < ApplicationRecord
     (self.price*1.08).round
   end
 
-  def self.search(search)
-    if search
-      where(['name LIKE ?', "%#{search}%"])
-      where(['genre_id LIKE ?', "%#{search}%"])
-    else
-      all
-    end
-  end
-
   with_options presence: true do
     validates :name
     validates :image

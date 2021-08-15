@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'public/genre', genres: @genres %>
+    </div>
+
+    <div class="col-9">
+      <% if @how == 'match' %>
+        <h2 style="display: inline;">"<%= Genre.find(@value).name %>"の検索結果</h5>
+      <% else %>
+        <h2 style="display: inline;">"<%= @value %>"の検索結果</h5>
+      <% end %>
+
+      <span><%= @datas.count %>件</span>
+
+      <div class="d-flex flex-wrap">
+          <% @datas.each do |data| %>
+
+          <div class="box">
+            <%= link_to item_path(data) do %>
+              <%= attachment_image_tag data, :image, :fill, 150, 120, class: 'm-4' %>
+            <% end %><br>
+
+            <h6><%= data.name %></h6>
+
+            <h6>￥<%= data.price.to_s(:delimited) %></h6>
+
+        </div>
+
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<%= paginate @datas %>

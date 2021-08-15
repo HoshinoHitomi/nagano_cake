@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'searches/search'
+  end
   devise_for(
     :admins,
     path: 'admin',
@@ -62,6 +65,8 @@ Rails.application.routes.draw do
     post '/orders/confirm' => "orders#confirm", as: :confirm_order
     get '/orders/thanks' => "orders#thanks", as: :thanks_order
     get '/orders/:id' => "orders#show", as: :order
+
+    get '/search' => "searches#search", as: :search
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

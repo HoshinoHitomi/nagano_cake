@@ -9,7 +9,7 @@ class Admin::HomesController < ApplicationController
 
       customer_id = Rails.application.routes.recognize_path(request.referer)[:id]
       @customer = Customer.find(customer_id)
-      @orders = @customer.orders.page(params[:page]).per(10)
+      @orders = @customer.orders.page(params[:page])
 
     else
 

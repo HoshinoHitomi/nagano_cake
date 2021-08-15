@@ -11,7 +11,7 @@
         <h2 style="display: inline;">"<%= @value %>"の検索結果</h5>
       <% end %>
 
-      <span><%= @datas.count %>件</span>
+      <span>(全<%= @datas.total_count %>件中、<%= @datas.count %>件を表示)</span>
 
       <div class="d-flex flex-wrap">
           <% @datas.each do |data| %>

@@ -18,4 +18,7 @@ class Item < ApplicationRecord
     validates :introduction
     validates :price
   end
+
+  validates :name, uniqueness: true, length: { in: 1..30}
+  validates :introduction, length: { in: 1..300 }
 end

@@ -79,11 +79,6 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:new_address]
       @order.name = params[:order][:new_name]
 
-      if @order.present?
-        flash[:alert] = "お届け先を入力してください。"
-        render :new
-      end
-
     end
 
     @order.status = "payment_waiting"

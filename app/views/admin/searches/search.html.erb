@@ -1,0 +1,25 @@
+<div class="container mt-4">
+
+  <h3 style="display: inline;">会員検索結果</h3>
+
+  <span><%= @datas.total_count %>件</span>
+
+    <table class="table m-4">
+      <tr class="thead-light">
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>ステータス</th>
+      </tr>
+
+    <% @datas.each do |data| %>
+      <tr>
+          <td><%= data.id %></td>
+          <td><%= link_to data.name, admin_customer_path(data) %></td>
+          <td><%= data.is_active ? "有効" : "退会" %></td>
+      </tr>
+    <% end %>
+
+    </table>
+</div>
+
+<%= paginate @datas %>

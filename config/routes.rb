@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'searches/search'
+  end
   namespace :public do
     get 'searches/search'
   end
@@ -40,6 +43,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show]
     patch '/orders/order_update' => "orders#order_update", as: :order_update
     patch '/orders/making_update' => "orders#making_update", as: :making_update
+    get '/search' => "searches#search", as: :search
   end
 
 

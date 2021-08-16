@@ -31,16 +31,10 @@
 
           <div class="row m-3">
             <div class="offset-9">
-              <%= form_with url: search_path, :method => 'get', local:true do |f| %>
-                <div class="input-group">
-                    <%= f.text_field 'search[value]', placeholder: 'Search', class: 'form-control' %>
-                    <%= f.hidden_field 'search[how]', :value => 'partical' %>
-                    <span class="input-btn-group">
-                      <%= button_tag type: "submit", class: 'btn btn-primary' do %>
-                        <i class="fas fa-search"></i>
-                      <% end %>
-                    </span>
-                </div>
+              <% if admin_signed_in? %>
+                <%= render 'layouts/admin_search' %>
+              <% else %>
+                <%= render 'layouts/customer_search' %>
               <% end %>
             </div>
           </div>
